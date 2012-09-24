@@ -1,5 +1,5 @@
 #include "PlaCloud/application.h"
-#include "gui/mainWindow.h"
+#include "gui/primeWindow.h"
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     //QApplication app(argc, argv);
     Application app(argc, argv);
         
-    MainWindow mw;
+    primeWindow mw;
     mw.show();   
 
     // create and show your widgets here

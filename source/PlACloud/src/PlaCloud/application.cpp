@@ -1,13 +1,7 @@
-/* 
- * File:   application.cpp
- * Author: riema
- * 
- * Created on 11. září 2012, 11:02
- */
-
 #include "application.h"
 #include "configurator.h"
 #include "fileOwnCloud.h"
+#include "kConfigOwnCloud.h"
 
 Application::Application(int argc, char **argv) : QApplication(argc,argv) {
     setApplicationName("PlACloud");
@@ -23,7 +17,9 @@ Application::Application(int argc, char **argv) : QApplication(argc,argv) {
     std::cout << "Obsah str: " << cnf.getValue("a") << std::endl;
     str = cnf.getValue("b");
     std::cout << "Obsah str: "  << (str.empty() ? "NULL" : str) << std::endl;*/
-    FileOwnCloud foc;
+    FileOwnCloud foc ("riema", "cloud.dejvino.com", 80);
+    //foc.openFilesInDolphin();
+    //KConfigOwnCloud kcoc ("riema", "cloud.dejvino.com", 80);
 }
 
 Application::~Application() {

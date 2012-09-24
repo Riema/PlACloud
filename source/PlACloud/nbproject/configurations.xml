@@ -5,6 +5,9 @@
       <logicalFolder name="gui" displayName="gui" projectFiles="true">
         <itemPath>src/gui/mainWindow.cpp</itemPath>
         <itemPath>src/gui/mainWindow.h</itemPath>
+        <itemPath>src/gui/primeWindow.cpp</itemPath>
+        <itemPath>src/gui/primeWindow.h</itemPath>
+        <itemPath>src/gui/primeWindow.ui</itemPath>
       </logicalFolder>
       <logicalFolder name="PlaCloud" displayName="PlaCloud" projectFiles="true">
         <itemPath>src/PlaCloud/application.cpp</itemPath>
@@ -13,6 +16,8 @@
         <itemPath>src/PlaCloud/configurator.h</itemPath>
         <itemPath>src/PlaCloud/fileOwnCloud.cpp</itemPath>
         <itemPath>src/PlaCloud/fileOwnCloud.h</itemPath>
+        <itemPath>src/PlaCloud/kConfigOwnCloud.cpp</itemPath>
+        <itemPath>src/PlaCloud/kConfigOwnCloud.h</itemPath>
       </logicalFolder>
       <itemPath>src/commons.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
@@ -50,6 +55,7 @@
           <linkerLibItems>
             <linkerOptionItem>`pkg-config --libs libconfig++`</linkerOptionItem>
             <linkerLibLibItem>kdecore</linkerLibLibItem>
+            <linkerLibLibItem>kio</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

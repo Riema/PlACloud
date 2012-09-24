@@ -1,14 +1,8 @@
-/* 
- * File:   commons.h
- * Author: riema
- *
- * Created on 8. září 2012, 17:16
- */
-
 #ifndef COMMONS_H
 #define	COMMONS_H
 
 #include <iostream>
+#include <cstring>
 #include <cstdlib>
 #include <kdebug.h>
 

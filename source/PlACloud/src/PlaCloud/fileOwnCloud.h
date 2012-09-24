@@ -1,19 +1,15 @@
-/* 
- * File:   fileOwnCloud.h
- * Author: riema
- *
- * Created on 11. září 2012, 19:39
- */
-
 #ifndef FILEOWNCLOUD_H
 #define	FILEOWNCLOUD_H
 
 class FileOwnCloud {
 public:
-    FileOwnCloud();
+    FileOwnCloud(std::string name, std::string adress, int port);
     ~FileOwnCloud();
+    void openFilesInDolphin();
 private:
-
+    int port; 
+    std::string userName;
+    std::string cloudAdress;
 };
 
 #endif	/* FILEOWNCLOUD_H */

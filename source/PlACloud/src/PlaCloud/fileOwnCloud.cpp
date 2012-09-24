@@ -1,15 +1,18 @@
-/* 
- * File:   fileOwnCloud.cpp
- * Author: riema
- * 
- * Created on 11. září 2012, 19:39
- */
-
+#include <sstream>
 #include "fileOwnCloud.h"
 #include "../commons.h"
 
-FileOwnCloud::FileOwnCloud() {
-    system("dolphin webdav://riema@127.0.0.1:80/owncloud/files/webdav.php");
+FileOwnCloud::FileOwnCloud(std::string name, std::string adress, int port) {
+    userName = name;
+    cloudAdress = adress;
+    this->port = port;
+}
+
+void FileOwnCloud::openFilesInDolphin(){
+    std::stringstream ss;
+    ss << "dolphin webdav://" << userName << "@" << cloudAdress << ":"
+            << port << "/files/webdav.php";
+    system(ss.str().c_str());
 }
 
 FileOwnCloud::~FileOwnCloud() {
