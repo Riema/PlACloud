@@ -3,13 +3,14 @@
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
-    // Q_INIT_RESOURCE(resfile);
+    
+    //Q_INIT_RESOURCE(primeWindow);
 
     //QApplication app(argc, argv);
     Application app(argc, argv);
         
     primeWindow mw;
-    mw.show();   
+    mw.showMaximized();
 
     // create and show your widgets here
 

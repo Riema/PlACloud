@@ -23,18 +23,26 @@ static const uint qt_meta_data_primeWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      13,   12,   12,   12, 0x0a,
+      30,   12,   12,   12, 0x0a,
+      49,   12,   12,   12, 0x0a,
+      69,   12,   12,   12, 0x0a,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_primeWindow[] = {
-    "primeWindow\0"
+    "primeWindow\0\0filePageSwitch()\0"
+    "configPageSwitch()\0contactPageSwitch()\0"
+    "setPageSwitch()\0"
 };
 
 const QMetaObject primeWindow::staticMetaObject = {
@@ -64,6 +72,16 @@ int primeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: filePageSwitch(); break;
+        case 1: configPageSwitch(); break;
+        case 2: contactPageSwitch(); break;
+        case 3: setPageSwitch(); break;
+        default: ;
+        }
+        _id -= 4;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

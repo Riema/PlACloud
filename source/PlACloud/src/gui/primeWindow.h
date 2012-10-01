@@ -15,8 +15,14 @@ class primeWindow : public QMainWindow {
 public:
     primeWindow();
     virtual ~primeWindow();
+public slots:
+    void filePageSwitch();
+    void configPageSwitch();
+    void contactPageSwitch();
+    void setPageSwitch();
 private:
     Ui::primeWindow widget;
+    void closeEvent(QCloseEvent* event); 
 };
 
 #endif	/* _PRIMEWINDOW_H */
