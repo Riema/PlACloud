@@ -6,7 +6,8 @@ using namespace libconfig;
 Configurator::Configurator() {
 
     // Path to home directory and to the conf file
-    path = getenv("HOME");
+    path = new char[256];
+    strcpy(path, getenv("HOME"));
     strcat(path, "/.placloud");
 
     // Does the conf  exists?

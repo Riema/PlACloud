@@ -31,10 +31,10 @@ static const uint qt_meta_data_primeWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      13,   12,   12,   12, 0x0a,
-      30,   12,   12,   12, 0x0a,
-      49,   12,   12,   12, 0x0a,
-      69,   12,   12,   12, 0x0a,
+      13,   12,   12,   12, 0x08,
+      30,   12,   12,   12, 0x08,
+      49,   12,   12,   12, 0x08,
+      69,   12,   12,   12, 0x08,
 
        0        // eod
 };
@@ -42,7 +42,7 @@ static const uint qt_meta_data_primeWindow[] = {
 static const char qt_meta_stringdata_primeWindow[] = {
     "primeWindow\0\0filePageSwitch()\0"
     "configPageSwitch()\0contactPageSwitch()\0"
-    "setPageSwitch()\0"
+    "settingsPageSwitch()\0"
 };
 
 const QMetaObject primeWindow::staticMetaObject = {
@@ -77,7 +77,7 @@ int primeWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 0: filePageSwitch(); break;
         case 1: configPageSwitch(); break;
         case 2: contactPageSwitch(); break;
-        case 3: setPageSwitch(); break;
+        case 3: settingsPageSwitch(); break;
         default: ;
         }
         _id -= 4;

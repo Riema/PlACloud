@@ -1,28 +1,27 @@
-/* 
- * File:   primeWindow.h
- * Author: riema
- *
- * Created on 18. září 2012, 14:32
- */
-
 #ifndef _PRIMEWINDOW_H
 #define	_PRIMEWINDOW_H
 
 #include "ui_primeWindow.h"
+#include "../PlaCloud/application.h"
 
 class primeWindow : public QMainWindow {
     Q_OBJECT
 public:
-    primeWindow();
+    primeWindow(Application *apps);
     virtual ~primeWindow();
-public slots:
+    void enableClouding();
+    void disableClouding();
+private slots:
     void filePageSwitch();
     void configPageSwitch();
     void contactPageSwitch();
-    void setPageSwitch();
+    void settingsPageSwitch();
 private:
     Ui::primeWindow widget;
+    Application* app;
     void closeEvent(QCloseEvent* event); 
+    void setConnection();
+    void fillSettingsPage();
 };
 
 #endif	/* _PRIMEWINDOW_H */

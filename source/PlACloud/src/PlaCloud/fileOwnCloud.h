@@ -1,15 +1,14 @@
 #ifndef FILEOWNCLOUD_H
 #define	FILEOWNCLOUD_H
 
+#include "../commons.h"
+
 class FileOwnCloud {
 public:
-    FileOwnCloud(std::string name, std::string adress, int port);
+    FileOwnCloud();
     ~FileOwnCloud();
-    void openFilesInDolphin();
+    void openFilesInDolphin(std::string userName, std::string cloudAdress, std::string port);
 private:
-    int port; 
-    std::string userName;
-    std::string cloudAdress;
 };
 
 #endif	/* FILEOWNCLOUD_H */

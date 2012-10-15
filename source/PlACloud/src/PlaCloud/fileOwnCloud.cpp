@@ -1,17 +1,13 @@
-#include <sstream>
 #include "fileOwnCloud.h"
-#include "../commons.h"
+#include <sstream>
 
-FileOwnCloud::FileOwnCloud(std::string name, std::string adress, int port) {
-    userName = name;
-    cloudAdress = adress;
-    this->port = port;
+FileOwnCloud::FileOwnCloud() {
 }
 
-void FileOwnCloud::openFilesInDolphin(){
+void FileOwnCloud::openFilesInDolphin(std::string userName, std::string cloudAdress, std::string port) {
     std::stringstream ss;
-    ss << "dolphin webdav://" << userName << "@" << cloudAdress << ":"
-            << port << "/files/webdav.php";
+    ss << "(dolphin webdav://" << userName << "@" << cloudAdress << ":"
+            << port << "/files/webdav.php &)";
     system(ss.str().c_str());
 }
 

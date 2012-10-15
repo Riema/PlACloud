@@ -15,7 +15,6 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QCheckBox>
-#include <QtGui/QComboBox>
 #include <QtGui/QGridLayout>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
@@ -42,7 +41,6 @@ public:
     QAction *actionOwnCloud;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout;
-    QComboBox *selectionComboBox;
     QStackedWidget *ownCloudStackedWidget;
     QWidget *filePage;
     QGridLayout *gridLayout_2;
@@ -75,7 +73,7 @@ public:
     QPushButton *calendarButton;
     QSpacerItem *horizontalSpacer_3;
     QWidget *setPage;
-    QVBoxLayout *verticalLayout_8;
+    QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_5;
     QLabel *userNameLabel;
     QLineEdit *userNameLineEdit;
@@ -86,6 +84,10 @@ public:
     QLabel *portLabel;
     QSpinBox *portSpinBox;
     QSpacerItem *horizontalSpacer_5;
+    QHBoxLayout *horizontalLayout_11;
+    QSpacerItem *horizontalSpacer_6;
+    QPushButton *testConnectionPushButton;
+    QSpacerItem *horizontalSpacer_7;
     QScrollBar *horizontalScrollBar;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout;
@@ -110,11 +112,6 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout = new QVBoxLayout(centralwidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        selectionComboBox = new QComboBox(centralwidget);
-        selectionComboBox->setObjectName(QString::fromUtf8("selectionComboBox"));
-
-        verticalLayout->addWidget(selectionComboBox);
-
         ownCloudStackedWidget = new QStackedWidget(centralwidget);
         ownCloudStackedWidget->setObjectName(QString::fromUtf8("ownCloudStackedWidget"));
         filePage = new QWidget();
@@ -268,8 +265,8 @@ public:
         ownCloudStackedWidget->addWidget(contactPage);
         setPage = new QWidget();
         setPage->setObjectName(QString::fromUtf8("setPage"));
-        verticalLayout_8 = new QVBoxLayout(setPage);
-        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        verticalLayout_6 = new QVBoxLayout(setPage);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         userNameLabel = new QLabel(setPage);
@@ -285,7 +282,7 @@ public:
         horizontalLayout_5->addWidget(userNameLineEdit);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_5);
+        verticalLayout_6->addLayout(horizontalLayout_5);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
@@ -303,7 +300,7 @@ public:
         horizontalLayout_6->addWidget(serverLineEdit);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_6);
+        verticalLayout_6->addLayout(horizontalLayout_6);
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
@@ -326,7 +323,32 @@ public:
         horizontalLayout_7->addItem(horizontalSpacer_5);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_7);
+        verticalLayout_6->addLayout(horizontalLayout_7);
+
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_6);
+
+        testConnectionPushButton = new QPushButton(setPage);
+        testConnectionPushButton->setObjectName(QString::fromUtf8("testConnectionPushButton"));
+        QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(testConnectionPushButton->sizePolicy().hasHeightForWidth());
+        testConnectionPushButton->setSizePolicy(sizePolicy1);
+        testConnectionPushButton->setMinimumSize(QSize(50, 50));
+        testConnectionPushButton->setMaximumSize(QSize(150, 100));
+
+        horizontalLayout_11->addWidget(testConnectionPushButton);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_7);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_11);
 
         ownCloudStackedWidget->addWidget(setPage);
         userNameLineEdit->raise();
@@ -335,12 +357,14 @@ public:
         userNameLabel->raise();
         serverLabel->raise();
         portLabel->raise();
+        testConnectionPushButton->raise();
 
         verticalLayout->addWidget(ownCloudStackedWidget);
 
         horizontalScrollBar = new QScrollBar(centralwidget);
         horizontalScrollBar->setObjectName(QString::fromUtf8("horizontalScrollBar"));
-        horizontalScrollBar->setMaximum(4);
+        horizontalScrollBar->setMinimumSize(QSize(50, 50));
+        horizontalScrollBar->setMaximum(3);
         horizontalScrollBar->setPageStep(1);
         horizontalScrollBar->setOrientation(Qt::Horizontal);
 
@@ -348,38 +372,39 @@ public:
 
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
-        groupBox->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy2);
+        groupBox->setMaximumSize(QSize(16777215, 200));
         groupBox->setAlignment(Qt::AlignCenter);
         horizontalLayout = new QHBoxLayout(groupBox);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         fileButton = new QPushButton(groupBox);
         fileButton->setObjectName(QString::fromUtf8("fileButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(fileButton->sizePolicy().hasHeightForWidth());
-        fileButton->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(fileButton->sizePolicy().hasHeightForWidth());
+        fileButton->setSizePolicy(sizePolicy3);
         fileButton->setMinimumSize(QSize(50, 50));
 
         horizontalLayout->addWidget(fileButton);
 
         configButton = new QPushButton(groupBox);
         configButton->setObjectName(QString::fromUtf8("configButton"));
-        sizePolicy2.setHeightForWidth(configButton->sizePolicy().hasHeightForWidth());
-        configButton->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(configButton->sizePolicy().hasHeightForWidth());
+        configButton->setSizePolicy(sizePolicy3);
         configButton->setMinimumSize(QSize(50, 50));
 
         horizontalLayout->addWidget(configButton);
 
         contactButton = new QPushButton(groupBox);
         contactButton->setObjectName(QString::fromUtf8("contactButton"));
-        sizePolicy2.setHeightForWidth(contactButton->sizePolicy().hasHeightForWidth());
-        contactButton->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(contactButton->sizePolicy().hasHeightForWidth());
+        contactButton->setSizePolicy(sizePolicy3);
         contactButton->setMinimumSize(QSize(50, 50));
         contactButton->setFlat(false);
 
@@ -387,8 +412,8 @@ public:
 
         settingsButton = new QPushButton(groupBox);
         settingsButton->setObjectName(QString::fromUtf8("settingsButton"));
-        sizePolicy2.setHeightForWidth(settingsButton->sizePolicy().hasHeightForWidth());
-        settingsButton->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(settingsButton->sizePolicy().hasHeightForWidth());
+        settingsButton->setSizePolicy(sizePolicy3);
         settingsButton->setMinimumSize(QSize(50, 50));
 
         horizontalLayout->addWidget(settingsButton);
@@ -409,7 +434,7 @@ public:
         QObject::connect(horizontalScrollBar, SIGNAL(valueChanged(int)), ownCloudStackedWidget, SLOT(setCurrentIndex(int)));
         QObject::connect(configCheckBox, SIGNAL(clicked(bool)), spinBox, SLOT(setEnabled(bool)));
 
-        ownCloudStackedWidget->setCurrentIndex(3);
+        ownCloudStackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(primeWindow);
@@ -435,6 +460,7 @@ public:
         userNameLabel->setText(QApplication::translate("primeWindow", "User name:", 0, QApplication::UnicodeUTF8));
         serverLabel->setText(QApplication::translate("primeWindow", "URL of cloud server:", 0, QApplication::UnicodeUTF8));
         portLabel->setText(QApplication::translate("primeWindow", "Port: ", 0, QApplication::UnicodeUTF8));
+        testConnectionPushButton->setText(QApplication::translate("primeWindow", "Test connections", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("primeWindow", "Menu", 0, QApplication::UnicodeUTF8));
         fileButton->setText(QApplication::translate("primeWindow", "Files", 0, QApplication::UnicodeUTF8));
         configButton->setText(QApplication::translate("primeWindow", "Configuration", 0, QApplication::UnicodeUTF8));
