@@ -101,7 +101,7 @@ public:
     {
         if (primeWindow->objectName().isEmpty())
             primeWindow->setObjectName(QString::fromUtf8("primeWindow"));
-        primeWindow->resize(798, 488);
+        primeWindow->resize(566, 488);
         primeWindow->setLayoutDirection(Qt::LeftToRight);
         actionOwnCloud = new QAction(primeWindow);
         actionOwnCloud->setObjectName(QString::fromUtf8("actionOwnCloud"));
@@ -214,7 +214,7 @@ public:
         contactPage->setObjectName(QString::fromUtf8("contactPage"));
         horizontalLayout_9 = new QHBoxLayout(contactPage);
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        horizontalSpacer_4 = new QSpacerItem(242, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_4);
 
@@ -258,7 +258,7 @@ public:
 
         horizontalLayout_9->addLayout(verticalLayout_5);
 
-        horizontalSpacer_3 = new QSpacerItem(242, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_3 = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_3);
 
@@ -434,7 +434,7 @@ public:
         QObject::connect(horizontalScrollBar, SIGNAL(valueChanged(int)), ownCloudStackedWidget, SLOT(setCurrentIndex(int)));
         QObject::connect(configCheckBox, SIGNAL(clicked(bool)), spinBox, SLOT(setEnabled(bool)));
 
-        ownCloudStackedWidget->setCurrentIndex(0);
+        ownCloudStackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(primeWindow);
@@ -454,9 +454,9 @@ public:
         saveConfButton->setText(QApplication::translate("primeWindow", "Backup configuration now", 0, QApplication::UnicodeUTF8));
         restoreConfigButton->setText(QApplication::translate("primeWindow", "Restore selected configuration", 0, QApplication::UnicodeUTF8));
         contactCheckBox->setText(QApplication::translate("primeWindow", "Synchronize contacts", 0, QApplication::UnicodeUTF8));
-        contactButton_2->setText(QApplication::translate("primeWindow", "Open Kontact Touch", 0, QApplication::UnicodeUTF8));
+        contactButton_2->setText(QApplication::translate("primeWindow", "Open Contacts", 0, QApplication::UnicodeUTF8));
         calendarCheckBox->setText(QApplication::translate("primeWindow", "Synchronize calendar", 0, QApplication::UnicodeUTF8));
-        calendarButton->setText(QApplication::translate("primeWindow", "Open KOrganizer", 0, QApplication::UnicodeUTF8));
+        calendarButton->setText(QApplication::translate("primeWindow", "Open Calendar", 0, QApplication::UnicodeUTF8));
         userNameLabel->setText(QApplication::translate("primeWindow", "User name:", 0, QApplication::UnicodeUTF8));
         serverLabel->setText(QApplication::translate("primeWindow", "URL of cloud server:", 0, QApplication::UnicodeUTF8));
         portLabel->setText(QApplication::translate("primeWindow", "Port: ", 0, QApplication::UnicodeUTF8));

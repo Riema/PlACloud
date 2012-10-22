@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
+    <width>566</width>
     <height>488</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
     <item>
      <widget class="QStackedWidget" name="ownCloudStackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="filePage">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -182,7 +182,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>242</width>
+            <width>138</width>
             <height>20</height>
            </size>
           </property>
@@ -214,7 +214,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Open Kontact Touch</string>
+               <string>Open Contacts</string>
               </property>
              </widget>
             </item>
@@ -250,7 +250,7 @@
                </size>
               </property>
               <property name="text">
-               <string>Open KOrganizer</string>
+               <string>Open Calendar</string>
               </property>
              </widget>
             </item>
@@ -265,7 +265,7 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>242</width>
+            <width>138</width>
             <height>20</height>
            </size>
           </property>
