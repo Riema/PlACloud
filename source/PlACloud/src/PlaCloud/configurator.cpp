@@ -1,60 +1,30 @@
 #include <fstream>
+#include <kglobal.h>
+#include <QStringList>
+#include <kconfiggroup.h>
 #include "configurator.h"
 
-using namespace libconfig;
-
 Configurator::Configurator() {
+    config = KSharedConfig::openConfig("placloudrc");
 
-    // Path to home directory and to the conf file
-    path = new char[256];
-    strcpy(path, getenv("HOME"));
-    strcat(path, "/.placloud");
-
-    // Does the conf  exists?
-    if (!(access(path, F_OK) != -1)) {
-        kDebug() << "Config doesn't exist. Creating empty one.";
-        std::ofstream newFile(path);
-        newFile.close();
-    }
-    
-    //reading the configuration
-    try {
-        cnf.readFile(path);
-    } catch (const FileIOException ex) {
-        kDebug() << "I/O error while reading config file.";
-        throw;
-    } catch (const ParseException ex) {
-        kDebug() << "Parse error at " << ex.getFile() << ":" << ex.getLine() << " - " << ex.getError();
-        throw;
-    }
+    /*foreach (const QString& group, config->groupList() ){
+        kDebug() << "next group" << group;
+    }*/
 }
 
 Configurator::~Configurator() {
 }
 
-std::string Configurator::getValue(std::string key) {
-    std::string value = "";
-    cnf.lookupValue(key, value);
-    return value;
+QString Configurator::getValue(QString key) {
+    KConfigGroup ownCloudGroup(config, "ownCloud");
+    return ownCloudGroup.readEntry(key, "");
 }
 
-void Configurator::setValue(std::string key, std::string value) {
+void Configurator::setValue(QString key, QString value) {
     if (value != "" && key != "") {
-        if (!cnf.exists(key)) {
-            Setting &set = cnf.getRoot();
-            set.add(key, Setting::TypeString) = value;
-        } else {
-            Setting &set = cnf.lookup(key);
-            set = value;
-        }
-
-        try {
-            cnf.writeFile(path);
-            kDebug() << "New configuration " << key.c_str() << "->" << value.c_str() <<"successfully written to: " << path;
-        } catch (const FileIOException &fioex) {
-            kDebug() << "I/O error while writing file: " << path;
-            throw;
-        }
+        KConfigGroup ownCloudGroup(config, "ownCloud");
+        ownCloudGroup.writeEntry(key, value);
+        ownCloudGroup.sync();
     }
 }
 

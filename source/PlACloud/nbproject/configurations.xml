@@ -51,7 +51,6 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerOptionItem>`pkg-config --libs libconfig++`</linkerOptionItem>
             <linkerLibLibItem>kdecore</linkerLibLibItem>
             <linkerLibLibItem>kio</linkerLibLibItem>
           </linkerLibItems>

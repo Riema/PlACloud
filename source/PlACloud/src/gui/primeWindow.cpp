@@ -8,7 +8,6 @@ primeWindow::primeWindow(Application* apps) {
 
     setConnection();
     fillSettingsPage();
-    disableClouding();
     QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
     widget.ownCloudStackedWidget->setCurrentIndex(3);
 }

@@ -7,21 +7,21 @@ Application::Application(int argc, char **argv) : QApplication(argc, argv) {
 }
 
 QString Application::getOwnCloudUserName() {
-    return toQString(cnf.getValue("ownCloudUserName"));
+    return cnf.getValue("ownCloudUserName");
 }
 
 QString Application::getOwnCloudServer() {
-    return toQString(cnf.getValue("ownCloudServer"));
+    return cnf.getValue("ownCloudServer");
 }
 
 QString Application::getOwnCloudPort() {
-    return toQString(cnf.getValue("ownCloudPort"));
+    return cnf.getValue("ownCloudPort");
 }
 
 void Application::setOwnCloudUserName() {
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
     if (edit) {
-        cnf.setValue("ownCloudUserName", fromQString(edit->text()));
+        cnf.setValue("ownCloudUserName", edit->text());
     } else {
         kDebug() << "Problem with changing ownCloud user name";
     }
@@ -30,14 +30,14 @@ void Application::setOwnCloudUserName() {
 void Application::setOwnCloudServer() {
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
     if (edit) {
-        cnf.setValue("ownCloudServer", fromQString(edit->text()));
+        cnf.setValue("ownCloudServer", edit->text());
     } else {
         kDebug() << "Problem with changing ownCloud server";
     }
 }
 
 void Application::setOwnCloudPort(QString port) {
-    cnf.setValue("ownCloudPort", fromQString(port));
+    cnf.setValue("ownCloudPort", port);
 }
 
 void Application::openFilesInProgram() {
