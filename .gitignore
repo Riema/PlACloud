@@ -13,6 +13,7 @@ thesis.pdf
 # Temp #
 ########
 *~
+*.lock
 
 # Compiled source #
 ###################
