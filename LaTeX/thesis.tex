@@ -1,9 +1,11 @@
 \documentclass[12pt,oneside,draft]{fithesis2}  
 \usepackage[czech]{babel} % package for multilingual support  
 \usepackage[utf8]{inputenc} % Windows OS encoding  
-\usepackage[T1]{fontenc}  
-\usepackage[plainpages=false,pdfpagelabels,unicode]{hyperref}  
- 
+\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage[plainpages=false,pdfpagelabels,unicode,colorlinks]{hyperref} 
+\usepackage[colorinlistoftodos, textwidth=4cm, shadow]{todonotes}
+
 \thesistitle{Integrace Cloud computing s~Plasma Active} % enter thesis title  
 \thesissubtitle{Diplomová práce}  
 \thesisstudent{Marie Hrdinová}    % name of the author  
@@ -35,7 +37,8 @@ Cloud, Plasma Active, storage, KDE, tablet, mobilní zařízení
 \end{ThesisKeyWords}  
  
 \MainMatter  
-\tableofcontents          % prints table of contents  
+\tableofcontents          % prints table of contents 
+\listoftodos % list of TODOs 
  
 \include{intro}
 
@@ -47,7 +50,7 @@ Cloud, Plasma Active, storage, KDE, tablet, mobilní zařízení
 
 \include{outro}
  
-\bibliographystyle{plain} % sets plain bibliography style  
+\bibliographystyle{unsrt} % sets plain bibliography style  
 \bibliography{literature}     % BibTeX database file  
  
 \end{document} 

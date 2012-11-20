@@ -8,6 +8,7 @@ thesis.pdf
 *.kilepr
 *.toc
 *.dvi
+*.tdo
 *.backup
 
 # Temp #
