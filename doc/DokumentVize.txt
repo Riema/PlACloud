@@ -1,6 +1,0 @@
-Dokument Vize - o propojení tabletu s Plasma Active a cloudového úložiště
-
-* Uživatel má tablet s PA a využívá z něj cloudové úložiště, bez nutnosti pokaždé zadávat přihlašovací údaje. 
-* Jeho kontakty uložené ve vzdáleném úložišti jsou přístupné pro aplikace na PA; stejně jako události v kalendáři.
-* Zároveň se nemusí bát o svoje lokální konfigurační nastavení KDE aplikací, protože je zálohováno a může být v případě potřeby obnoveno.
-*  Všechny vlastnosti jsou pohodlně ovládány z programu z dotekově přívětivým rozhraním.
