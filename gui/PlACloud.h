@@ -1,14 +1,14 @@
-#ifndef _PRIMEWINDOW_H
-#define	_PRIMEWINDOW_H
+#ifndef _PLACLOUD_H
+#define	_PLACLOUD_H
 
-#include "ui_primeWindow.h"
-#include "../PlaCloud/application.h"
+#include "ui_PlACloud.h"
+#include "../src/application.h"
 
-class primeWindow : public QMainWindow {
+class PlACloud : public QMainWindow {
     Q_OBJECT
 public:
-    primeWindow(Application *apps);
-    virtual ~primeWindow();
+    PlACloud(Application *apps);
+    virtual ~PlACloud();
     void enableClouding();
     void disableClouding();
 private slots:
@@ -17,11 +17,11 @@ private slots:
     void contactPageSwitch();
     void settingsPageSwitch();
 private:
-    Ui::primeWindow widget;
+    Ui::PlACloud widget;
     Application* app;
     void closeEvent(QCloseEvent* event); 
     void setConnection();
     void fillSettingsPage();
 };
 
-#endif	/* _PRIMEWINDOW_H */
+#endif	/* _PLACLOUD_H */

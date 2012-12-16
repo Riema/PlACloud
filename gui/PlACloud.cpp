@@ -1,18 +1,19 @@
-#include "primeWindow.h"
+#include "PlACloud.h"
 #include <QMessageBox>
 #include <QCloseEvent>
 
-primeWindow::primeWindow(Application* apps) {
+PlACloud::PlACloud(Application* apps) {
     app = apps;
     widget.setupUi(this);
 
     setConnection();
     fillSettingsPage();
+    disableClouding();
     QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
     widget.ownCloudStackedWidget->setCurrentIndex(3);
 }
 
-void primeWindow::enableClouding() {
+void PlACloud::enableClouding() {
     widget.fileButton->setEnabled(true);
     widget.configButton->setEnabled(true);
     widget.contactButton->setEnabled(true);
@@ -21,7 +22,7 @@ void primeWindow::enableClouding() {
     widget.contactPage->setEnabled(true);
 }
 
-void primeWindow::disableClouding() {
+void PlACloud::disableClouding() {
     widget.fileButton->setEnabled(false);
     widget.configButton->setEnabled(false);
     widget.contactButton->setEnabled(false);
@@ -30,13 +31,13 @@ void primeWindow::disableClouding() {
     widget.contactPage->setEnabled(false);
 }
 
-void primeWindow::fillSettingsPage() {
+void PlACloud::fillSettingsPage() {
     widget.userNameLineEdit->setText(app->getOwnCloudUserName());
     widget.serverLineEdit->setText(app->getOwnCloudServer());
     widget.portSpinBox->setValue(app->getOwnCloudPort().toInt());
 }
 
-void primeWindow::setConnection() {
+void PlACloud::setConnection() {
     //connection for button switching pages
     QObject::connect(widget.fileButton, SIGNAL(clicked()), this, SLOT(filePageSwitch()));
     QObject::connect(widget.configButton, SIGNAL(clicked()), this, SLOT(configPageSwitch()));
@@ -49,23 +50,23 @@ void primeWindow::setConnection() {
     QObject::connect(widget.portSpinBox, SIGNAL(valueChanged(QString)), app, SLOT(setOwnCloudPort(QString)));
 }
 
-void primeWindow::filePageSwitch() {
+void PlACloud::filePageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(0);
 }
 
-void primeWindow::configPageSwitch() {
+void PlACloud::configPageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(1);
 }
 
-void primeWindow::contactPageSwitch() {
+void PlACloud::contactPageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(2);
 }
 
-void primeWindow::settingsPageSwitch() {
+void PlACloud::settingsPageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(3);
 }
 
-void primeWindow::closeEvent(QCloseEvent* event) {
+void PlACloud::closeEvent(QCloseEvent* event) {
     /*int res = QMessageBox::warning(this, windowTitle(), "Are you sure?",
                 QMessageBox::Yes|QMessageBox::No);
     if(res == QMessageBox::Yes)
@@ -74,5 +75,5 @@ void primeWindow::closeEvent(QCloseEvent* event) {
         event->ignore(); */
 }
 
-primeWindow::~primeWindow() {
+PlACloud::~PlACloud() {
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>primeWindow</class>
- <widget class="QMainWindow" name="primeWindow">
+ <class>PlACloud</class>
+ <widget class="QMainWindow" name="PlACloud">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -437,16 +437,6 @@
          </layout>
         </item>
        </layout>
-       <zorder>horizontalScrollBar</zorder>
-       <zorder>userNameLineEdit</zorder>
-       <zorder>serverLineEdit</zorder>
-       <zorder>portSpinBox</zorder>
-       <zorder>userNameLabel</zorder>
-       <zorder>serverLabel</zorder>
-       <zorder>portLabel</zorder>
-       <zorder>testConnectionPushButton</zorder>
-       <zorder>horizontalSpacer_6</zorder>
-       <zorder>horizontalSpacer_7</zorder>
       </widget>
      </widget>
     </item>

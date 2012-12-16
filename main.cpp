@@ -1,5 +1,5 @@
-#include "PlaCloud/application.h"
-#include "gui/primeWindow.h"
+#include "src/application.h"
+#include "gui/PlACloud.h"
 
 int main(int argc, char *argv[]) {
     // initialize resources, if needed
@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     
     Application app(argc, argv);
   
-    primeWindow mw(&app);
+    PlACloud mw(&app);
 
     mw.showMaximized();
  
