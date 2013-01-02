@@ -21,6 +21,7 @@ void PlACloud::connectFilePage(){
 
 void PlACloud::connectConfigPage(){
     QObject::connect(widget.saveConfButton, SIGNAL(clicked()), app, SLOT(safeKConfigNow()));
+    QObject::connect(widget.configCheckBox, SIGNAL(toggled(bool)), app, SLOT(setOwnCloudAutoBackUp(bool)));
 }
 
 void PlACloud::connectSettingsPage(){
@@ -45,6 +46,8 @@ void PlACloud::fillSettingsPage() {
     widget.userNameLineEdit->setText(app->getOwnCloudUserName());
     widget.serverLineEdit->setText(app->getOwnCloudServer());
     widget.portSpinBox->setValue(app->getOwnCloudPort().toInt());
+    widget.configCheckBox->setChecked(app->isOwnCloudAutoBackUp());
+    widget.spinBox->setEnabled(widget.configCheckBox->isChecked());
 }
 
 void PlACloud::setConnection() {

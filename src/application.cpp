@@ -18,6 +18,15 @@ QString Application::getOwnCloudPort() {
     return cnf.getValue("ownCloudPort");
 }
 
+bool Application::isOwnCloudAutoBackUp(){
+    QString result = cnf.getValue("ownCloudAutoBackUp");
+    if (result == "true"){
+      return true;
+    }
+    
+    return false;
+}
+
 void Application::setOwnCloudUserName() {
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
     if (edit) {
@@ -39,6 +48,15 @@ void Application::setOwnCloudServer() {
 void Application::setOwnCloudPort(QString port) {
     cnf.setValue("ownCloudPort", port);
 }
+
+void Application::setOwnCloudAutoBackUp(bool checked){
+   if (checked){
+     cnf.setValue("ownCloudAutoBackUp","true");
+   } else {
+   cnf.setValue("ownCloudAutoBackUp","false");
+   }
+}
+
 
 void Application::openFilesInProgram() {
     foc.openFilesInDolphin(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));

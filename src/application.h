@@ -15,12 +15,14 @@ public:
     QString getOwnCloudUserName();
     QString getOwnCloudServer();
     QString getOwnCloudPort();
+    bool isOwnCloudAutoBackUp();
 public slots:
     void openFilesInProgram();
     void safeKConfigNow();
     void setOwnCloudUserName();
     void setOwnCloudServer();
     void setOwnCloudPort(QString);
+    void setOwnCloudAutoBackUp(bool);
 private:
     QString toQString(std::string const &s);
     std::string fromQString(QString const &s);

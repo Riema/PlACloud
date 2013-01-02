@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
   
     PlACloud mw(&app);
 
-    mw.showMaximized();
+    mw.show();
  
     return app.exec();
 }
