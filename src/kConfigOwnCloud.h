@@ -3,14 +3,11 @@
 
 class KConfigOwnCloud {
 public:
-    KConfigOwnCloud(std::string name, std::string adress, int port);
+    KConfigOwnCloud();
     ~KConfigOwnCloud();
+    void uploadConfigutarion(QString name, QString adress, QString port);
 private:
-    void createConfigDirectory();
-    void uploadConfigutarion();
-    int port; 
-    std::string userName;
-    std::string cloudAdress;
+    void createConfigDirectory(QString name, QString adress, QString port);    
 };
 
 #endif	/* KCONFIGOWNCLOUD_H */

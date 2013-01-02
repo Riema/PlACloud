@@ -44,6 +44,11 @@ void Application::openFilesInProgram() {
     foc.openFilesInDolphin(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
+void Application::safeKConfigNow(){
+    kc.uploadConfigutarion(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
+}
+
+
 QString Application::toQString(std::string const &s) {
     return QString::fromUtf8(s.c_str());
 }

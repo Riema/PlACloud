@@ -3,6 +3,7 @@
 
 #include "configurator.h"
 #include "fileOwnCloud.h"
+#include "kConfigOwnCloud.h"
 #include <QApplication>
 #include <QString>
 
@@ -16,6 +17,7 @@ public:
     QString getOwnCloudPort();
 public slots:
     void openFilesInProgram();
+    void safeKConfigNow();
     void setOwnCloudUserName();
     void setOwnCloudServer();
     void setOwnCloudPort(QString);
@@ -24,6 +26,7 @@ private:
     std::string fromQString(QString const &s);
     Configurator cnf;
     FileOwnCloud foc;
+    KConfigOwnCloud kc;
 };
 
 #endif	/* APPLICATION_H */

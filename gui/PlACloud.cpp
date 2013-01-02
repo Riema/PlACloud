@@ -9,8 +9,22 @@ PlACloud::PlACloud(Application* apps) {
     setConnection();
     fillSettingsPage();
     enableClouding();
-    QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
+    connectFilePage();
+    connectConfigPage();
+    connectSettingsPage();
     widget.ownCloudStackedWidget->setCurrentIndex(2);
+}
+
+void PlACloud::connectFilePage(){
+    QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
+}
+
+void PlACloud::connectConfigPage(){
+    QObject::connect(widget.saveConfButton, SIGNAL(clicked()), app, SLOT(safeKConfigNow()));
+}
+
+void PlACloud::connectSettingsPage(){
+
 }
 
 void PlACloud::enableClouding() {

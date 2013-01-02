@@ -21,6 +21,9 @@ private:
     void closeEvent(QCloseEvent* event); 
     void setConnection();
     void fillSettingsPage();
+    void connectFilePage();
+    void connectConfigPage();
+    void connectSettingsPage();
 };
 
 #endif	/* _PLACLOUD_H */
