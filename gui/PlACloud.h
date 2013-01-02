@@ -14,7 +14,6 @@ public:
 private slots:
     void filePageSwitch();
     void configPageSwitch();
-    void contactPageSwitch();
     void settingsPageSwitch();
 private:
     Ui::PlACloud widget;

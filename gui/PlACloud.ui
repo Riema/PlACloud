@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>566</width>
+    <width>655</width>
     <height>488</height>
    </rect>
   </property>
@@ -170,106 +170,6 @@
            <string>Restore selected configuration</string>
           </property>
          </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="contactPage">
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <item>
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>138</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_8">
-            <item>
-             <widget class="QCheckBox" name="contactCheckBox">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Synchronize contacts</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="contactButton_2">
-              <property name="minimumSize">
-               <size>
-                <width>75</width>
-                <height>75</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Open Contacts</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QCheckBox" name="calendarCheckBox">
-              <property name="minimumSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Synchronize calendar</string>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>50</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="calendarButton">
-              <property name="minimumSize">
-               <size>
-                <width>75</width>
-                <height>75</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Open Calendar</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>138</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>
@@ -449,7 +349,7 @@
        </size>
       </property>
       <property name="maximum">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="pageStep">
        <number>1</number>
@@ -518,28 +418,6 @@
          </property>
          <property name="text">
           <string>Configuration</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="contactButton">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>50</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Contacts/Calendar</string>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -639,12 +517,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>136</y>
+     <x>180</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>236</x>
-     <y>170</y>
+     <x>323</x>
+     <y>151</y>
     </hint>
    </hints>
   </connection>

@@ -8,27 +8,23 @@ PlACloud::PlACloud(Application* apps) {
 
     setConnection();
     fillSettingsPage();
-    disableClouding();
+    enableClouding();
     QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
-    widget.ownCloudStackedWidget->setCurrentIndex(3);
+    widget.ownCloudStackedWidget->setCurrentIndex(2);
 }
 
 void PlACloud::enableClouding() {
     widget.fileButton->setEnabled(true);
     widget.configButton->setEnabled(true);
-    widget.contactButton->setEnabled(true);
     widget.filePage->setEnabled(true);
     widget.configPage->setEnabled(true);
-    widget.contactPage->setEnabled(true);
 }
 
 void PlACloud::disableClouding() {
     widget.fileButton->setEnabled(false);
     widget.configButton->setEnabled(false);
-    widget.contactButton->setEnabled(false);
     widget.filePage->setEnabled(false);
     widget.configPage->setEnabled(false);
-    widget.contactPage->setEnabled(false);
 }
 
 void PlACloud::fillSettingsPage() {
@@ -41,7 +37,6 @@ void PlACloud::setConnection() {
     //connection for button switching pages
     QObject::connect(widget.fileButton, SIGNAL(clicked()), this, SLOT(filePageSwitch()));
     QObject::connect(widget.configButton, SIGNAL(clicked()), this, SLOT(configPageSwitch()));
-    QObject::connect(widget.contactButton, SIGNAL(clicked()), this, SLOT(contactPageSwitch()));
     QObject::connect(widget.settingsButton, SIGNAL(clicked()), this, SLOT(settingsPageSwitch()));
 
     //for changing ownCloud connection configuration
@@ -58,12 +53,8 @@ void PlACloud::configPageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(1);
 }
 
-void PlACloud::contactPageSwitch() {
-    widget.ownCloudStackedWidget->setCurrentIndex(2);
-}
-
 void PlACloud::settingsPageSwitch() {
-    widget.ownCloudStackedWidget->setCurrentIndex(3);
+    widget.ownCloudStackedWidget->setCurrentIndex(2);
 }
 
 void PlACloud::closeEvent(QCloseEvent* event) {
