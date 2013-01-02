@@ -1,4 +1,3 @@
-#include "../commons.h"
 #include "kConfigOwnCloud.h"
 #include <kstandarddirs.h>
 #include <kio/job.h>
@@ -32,6 +31,14 @@ void KConfigOwnCloud::uploadConfigutarion(QString name, QString adress, QString 
     
     KIO::copy(KUrl(source),KUrl(dest));
 }
+
+QStringList KConfigOwnCloud::getListOfDirectories(){
+    QStringList datum;
+    kDebug() << "Creating StringList";
+    datum << "1 " <<  "2" << "3";
+    return datum;
+}
+
 
 KConfigOwnCloud::~KConfigOwnCloud() {
 }

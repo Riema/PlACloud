@@ -3,6 +3,7 @@
 
 #include "ui_PlACloud.h"
 #include "../src/application.h"
+#include <QStringListModel>
 
 class PlACloud : public QMainWindow {
     Q_OBJECT
@@ -18,6 +19,7 @@ private slots:
 private:
     Ui::PlACloud widget;
     Application* app;
+    QStringListModel * configModel;
     void closeEvent(QCloseEvent* event); 
     void setConnection();
     void fillSettingsPage();

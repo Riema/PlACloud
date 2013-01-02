@@ -48,6 +48,12 @@ void PlACloud::fillSettingsPage() {
     widget.portSpinBox->setValue(app->getOwnCloudPort().toInt());
     widget.configCheckBox->setChecked(app->isOwnCloudAutoBackUp());
     widget.spinBox->setEnabled(widget.configCheckBox->isChecked());
+    
+    configModel = new QStringListModel(app->fillModel());
+    widget.configListView->setModel(configModel);
+    QStringList test;
+    test  <<   "datum" << "1 " <<  "2" << "3" <<  "datum" << "1 " <<  "2" << "3";
+    configModel->setStringList(test);
 }
 
 void PlACloud::setConnection() {

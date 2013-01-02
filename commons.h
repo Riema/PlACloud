@@ -5,6 +5,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <kdebug.h>
+#include <QString>
 
 #endif	/* COMMONS_H */
 

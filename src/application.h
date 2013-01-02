@@ -3,9 +3,9 @@
 
 #include "configurator.h"
 #include "fileOwnCloud.h"
+#include "../commons.h"
 #include "kConfigOwnCloud.h"
 #include <QApplication>
-#include <QString>
 
 class Application : public QApplication {
     Q_OBJECT
@@ -16,6 +16,7 @@ public:
     QString getOwnCloudServer();
     QString getOwnCloudPort();
     bool isOwnCloudAutoBackUp();
+    QStringList fillModel();
 public slots:
     void openFilesInProgram();
     void safeKConfigNow();
