@@ -28,6 +28,7 @@ bool Application::isOwnCloudAutoBackUp(){
 }
 
 void Application::setOwnCloudUserName() {
+    // get the content from QLineEdit
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
     if (edit) {
         cnf.setValue("ownCloudUserName", edit->text());
@@ -37,6 +38,7 @@ void Application::setOwnCloudUserName() {
 }
 
 void Application::setOwnCloudServer() {
+    // get the content from QLineEdit
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
     if (edit) {
         cnf.setValue("ownCloudServer", edit->text());
@@ -57,19 +59,17 @@ void Application::setOwnCloudAutoBackUp(bool checked){
    }
 }
 
-
 void Application::openFilesInProgram() {
     foc.openFilesInDolphin(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
-void Application::safeKConfigNow(){
+void Application::saveKConfigNow(){
     kc.uploadConfigutarion(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
 QStringList Application::fillModel(){
     return kc.getListOfDirectories();
 }
-
 
 QString Application::toQString(std::string const &s) {
     return QString::fromUtf8(s.c_str());

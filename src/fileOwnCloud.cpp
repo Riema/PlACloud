@@ -17,7 +17,11 @@ bool FileOwnCloud::testExistenceOfOwnCloud(QString userName, QString cloudAdress
 
 void FileOwnCloud::openFilesInDolphin(QString userName, QString cloudAdress, QString port) {
     QString program = "dolphin";
+    
+    // string representation of koi slave for WebDAV connection to ownCLoud 
     QStringList arguments(QString("webdav://%1@%2:%3/files/webdav.php").arg(userName, cloudAdress, port));
+    
+    // creates a process for Dolphin
     QProcess *myProcess = new QProcess(0);
     myProcess->startDetached(program, arguments);
 }

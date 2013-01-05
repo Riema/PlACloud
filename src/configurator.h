@@ -16,7 +16,6 @@ public:
      * Constructor. Prepare the configuration file to use.
      * The configuration file is a file located in standart KDE config directory. 
      * If the file exists configuration is opened and ready for use, otherwise an empty configuration file is created.
-     * @throw FileIOException if config file can't be open and read from.
      */
     Configurator();
 
@@ -32,7 +31,6 @@ public:
      * If the key already exists, the value is updated.
      * @param key The key to which the value is given. Empty string is ignored.
      * @param value The value of the key. Empty string is ignored.
-     * @throw FileIOException if config file can't be written to
      */
     void setValue(QString key, QString value);
     
