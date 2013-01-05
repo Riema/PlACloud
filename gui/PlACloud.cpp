@@ -25,6 +25,10 @@ void PlACloud::connectConfigPage(){
 }
 
 void PlACloud::connectSettingsPage(){
+    //for changing ownCloud connection configuration
+    QObject::connect(widget.userNameLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudUserName()));
+    QObject::connect(widget.serverLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudServer()));
+    QObject::connect(widget.portSpinBox, SIGNAL(valueChanged(QString)), app, SLOT(setOwnCloudPort(QString)));
 
 }
 
@@ -51,9 +55,6 @@ void PlACloud::fillSettingsPage() {
     
     configModel = new QStringListModel(app->fillModel());
     widget.configListView->setModel(configModel);
-    QStringList test;
-    test  <<   "datum" << "1 " <<  "2" << "3" <<  "datum" << "1 " <<  "2" << "3";
-    configModel->setStringList(test);
 }
 
 void PlACloud::setConnection() {
@@ -61,11 +62,6 @@ void PlACloud::setConnection() {
     QObject::connect(widget.fileButton, SIGNAL(clicked()), this, SLOT(filePageSwitch()));
     QObject::connect(widget.configButton, SIGNAL(clicked()), this, SLOT(configPageSwitch()));
     QObject::connect(widget.settingsButton, SIGNAL(clicked()), this, SLOT(settingsPageSwitch()));
-
-    //for changing ownCloud connection configuration
-    QObject::connect(widget.userNameLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudUserName()));
-    QObject::connect(widget.serverLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudServer()));
-    QObject::connect(widget.portSpinBox, SIGNAL(valueChanged(QString)), app, SLOT(setOwnCloudPort(QString)));
 }
 
 void PlACloud::filePageSwitch() {

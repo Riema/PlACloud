@@ -35,7 +35,7 @@ void KConfigOwnCloud::uploadConfigutarion(QString name, QString adress, QString 
 QStringList KConfigOwnCloud::getListOfDirectories(){
     QStringList datum;
     kDebug() << "Creating StringList";
-    datum << "1 " <<  "2" << "3";
+    datum << "2013-01-01 17:39:17" <<  "2012-12-29 18:15:21" << "2012-12-26 15:56:24" << "2012-12-18 15:36:48";
     return datum;
 }
 

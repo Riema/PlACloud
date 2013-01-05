@@ -1,8 +1,7 @@
-#include <fstream>
+#include "configurator.h"
 #include <kglobal.h>
 #include <QStringList>
 #include <kconfiggroup.h>
-#include "configurator.h"
 
 Configurator::Configurator() {
     config = KSharedConfig::openConfig("placloudrc");
@@ -21,10 +20,11 @@ QString Configurator::getValue(QString key) {
 }
 
 void Configurator::setValue(QString key, QString value) {
-    if (value != "" && key != "") {
+    if (value != "" && key != "") { // ignoring empty strings
         KConfigGroup ownCloudGroup(config, "ownCloud");
         ownCloudGroup.writeEntry(key, value);
-        ownCloudGroup.sync();
+	// write the changes to file
+        ownCloudGroup.sync(); 
     }
 }
 

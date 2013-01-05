@@ -1,20 +1,20 @@
 #ifndef CONFIGURATOR_H
 #define	CONFIGURATOR_H
 
+#include "../commons.h"
 #include <kconfig.h>
 #include <ksharedconfig.h>
-#include "../commons.h"
 
 /**
  * Class takes care of work with the configuration file.
- * It uses a library KConfig.
+ * It uses library KConfig.
  * @Author Marie Hrdinová
  */
 class Configurator {
 public:
     /**
      * Constructor. Prepare the configuration file to use.
-     * The configuration file is a hidden file located in standart KDE directory. 
+     * The configuration file is a file located in standart KDE config directory. 
      * If the file exists configuration is opened and ready for use, otherwise an empty configuration file is created.
      * @throw FileIOException if config file can't be open and read from.
      */
@@ -41,7 +41,9 @@ public:
      */
     ~Configurator();
 private:
-    // konfiguration
+    /**
+     * Object that manages the config file
+     */
     KSharedConfigPtr config;
 };
 

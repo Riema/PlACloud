@@ -2,10 +2,13 @@
 #define	COMMONS_H
 
 #include <iostream>
-#include <cstring>
 #include <cstdlib>
 #include <kdebug.h>
 #include <QString>
+
+/*
+ * Here are accumulated libraries included in most classes.
+ */
 
 #endif	/* COMMONS_H */
 
