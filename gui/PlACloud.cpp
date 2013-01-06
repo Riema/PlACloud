@@ -5,42 +5,42 @@
 PlACloud::PlACloud(Application* apps) {
     app = apps;
     // set up the widgets
-    widget.setupUi(this); 
-    
+    widget.setupUi(this);
+
     // filling the forms
     fillSettingsPage();
-    
+
     // calling funcion for creating connections
     setConnection();
     connectFilePage();
     connectConfigPage();
     connectSettingsPage();
-    
+
     // first page after start is page with User config
     widget.ownCloudStackedWidget->setCurrentIndex(2);
-    
+
     // try network connection
-    if (app->isNetworkConnection()){
-      enableClouding();
+    if (app->isNetworkConnection()) {
+        enableClouding();
     } else {
-      disableClouding();
+        disableClouding();
     }
-    
+
 }
 
-void PlACloud::connectFilePage(){
+void PlACloud::connectFilePage() {
     // the Dolphin start button
     QObject::connect(widget.dolphinButton, SIGNAL(clicked()), app, SLOT(openFilesInProgram()));
 }
 
-void PlACloud::connectConfigPage(){
+void PlACloud::connectConfigPage() {
     // upload KConfig now
     QObject::connect(widget.saveConfButton, SIGNAL(clicked()), app, SLOT(saveKConfigNow()));
     // Toggle of automatic backup button
     QObject::connect(widget.configCheckBox, SIGNAL(toggled(bool)), app, SLOT(setOwnCloudAutoBackUp(bool)));
 }
 
-void PlACloud::connectSettingsPage(){
+void PlACloud::connectSettingsPage() {
     //for changing ownCloud connection configuration
     QObject::connect(widget.userNameLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudUserName()));
     QObject::connect(widget.serverLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudServer()));
@@ -67,21 +67,20 @@ void PlACloud::fillSettingsPage() {
     widget.userNameLineEdit->setText(app->getOwnCloudUserName());
     widget.serverLineEdit->setText(app->getOwnCloudServer());
     widget.portSpinBox->setValue(app->getOwnCloudPort().toInt());
-    
+
     // automatic backup on KConfig page
     widget.configCheckBox->setChecked(app->isOwnCloudAutoBackUp());
     widget.spinBox->setEnabled(widget.configCheckBox->isChecked());
-    
+
     // adding content of ListView on KConfig page
     app->fillModel(this);
 }
 
-void PlACloud::onListReturn(QStringList list)
-{
+void PlACloud::onListReturn(QStringList list) {
     kDebug() << "Setting new model";
+    // adding content of ListView on KConfig page
     configModel = new QStringListModel(list);
     widget.configListView->setModel(configModel);
-    //widget.configListView->
 }
 
 void PlACloud::setConnection() {
@@ -108,7 +107,7 @@ void PlACloud::closeEvent(QCloseEvent* event) {
     /*int res = QMessageBox::warning(this, windowTitle(), "Are you sure?",
                 QMessageBox::Yes|QMessageBox::No);
     if(res == QMessageBox::Yes)
-        event->accept(); 
+        event->accept();
     else
         event->ignore(); */
 }

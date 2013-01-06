@@ -36,14 +36,20 @@ public:
 
     /**
      * It gets list of directories with KConfig from ownCloud,
-     * it changes their name to date string representation readable by people
-     * "yyyy-mm-dd hh:mm:ss"
      * @param userName name of ownCloud user
      * @param cloudAdress ownCloud instance address
      * @param port port where the ownCloud is running
+     * @param gui instance for asynchronous callback
+     * @param facade instance for asynchronous callback
      */
     void getListOfDirectories(QString name, QString adress, QString port, void *gui, ListReturnWithParamIntf *facade);
-    
+        
+    /**
+     * Callback the directory retrieving results
+     * @param list list of string represented directories
+     * @param gui instance for asynchronous callback
+     * @param facade instance for asynchronous callback
+     */
     void returnListOfDirectories(QStringList list,  void *gui, ListReturnWithParamIntf *facade);
 private:
     /**
@@ -58,19 +64,53 @@ private:
 };
 
 /**
- *
+ * Class that does the asynchronous job of retrieving the list of directories
  */
-class ListJobRunner : public QObject{
+class ListJobRunner : public QObject {
     Q_OBJECT // for signals and slots
 public:
+    /**
+     * Creates the ListJob handling class
+     * @param gui instance for asynchronous callback deep 2
+     * @param facade instance for asynchronous callback deep 1
+     * @param owner  instance for asynchronous callback deep 0
+     */
     ListJobRunner(void *gui, ListReturnWithParamIntf *facade, KConfigOwnCloud *owner);
+
+    /**
+     * Destroyes the ListJob handling class
+     */
     virtual ~ListJobRunner();
+
+    /**
+     * start the ListJob on ownCloud instance with given parameters
+     * @param userName name of ownCloud user
+     * @param cloudAdress ownCloud instance address
+     * @param port port where the ownCloud is running
+     */
     void runJob(QString name, QString adress, QString port);
 public slots:
+    /**
+     * It changes directories name to date string representation readable by people
+     * "yyyy-mm-dd hh:mm:ss"
+     * @param job job that ended
+     * @param list List of found directories
+     */
     void jobDone(KIO::Job *job, const KIO::UDSEntryList &list);
 private:
+    /**
+     * instance for asynchronous callback deep 0
+     */
     KConfigOwnCloud *owner;
+
+    /**
+     * instance for asynchronous callback deep 1
+     */
     ListReturnWithParamIntf *facade;
+
+    /**
+     * instance for asynchronous callback deep 2
+     */
     void *gui;
 };
 #endif	/* KCONFIGOWNCLOUD_H */

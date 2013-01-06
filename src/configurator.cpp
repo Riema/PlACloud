@@ -23,8 +23,8 @@ void Configurator::setValue(QString key, QString value) {
     if (value != "" && key != "") { // ignoring empty strings
         KConfigGroup ownCloudGroup(config, "ownCloud");
         ownCloudGroup.writeEntry(key, value);
-	// write the changes to file
-        ownCloudGroup.sync(); 
+        // write the changes to file
+        ownCloudGroup.sync();
     }
 }
 

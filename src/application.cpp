@@ -18,17 +18,17 @@ QString Application::getOwnCloudPort() {
     return cnf.getValue("ownCloudPort");
 }
 
-bool Application::isOwnCloudAutoBackUp(){
+bool Application::isOwnCloudAutoBackUp() {
     QString result = cnf.getValue("ownCloudAutoBackUp");
-    if (result == "true"){
-      return true;
+    if (result == "true") {
+        return true;
     }
-    
+
     return false;
 }
 
-void Application::onListReturnWithParam(QStringList list, void* param){
-      kDebug() << "In facade"; 
+void Application::onListReturnWithParam(QStringList list, void* param) {
+    kDebug() << "In facade";
     ListReturnIntf *dest = (ListReturnIntf*) param;
     dest->onListReturn(list);
 }
@@ -57,27 +57,27 @@ void Application::setOwnCloudPort(QString port) {
     cnf.setValue("ownCloudPort", port);
 }
 
-void Application::setOwnCloudAutoBackUp(bool checked){
-   if (checked){
-     cnf.setValue("ownCloudAutoBackUp","true");
-   } else {
-   cnf.setValue("ownCloudAutoBackUp","false");
-   }
+void Application::setOwnCloudAutoBackUp(bool checked) {
+    if (checked) {
+        cnf.setValue("ownCloudAutoBackUp","true");
+    } else {
+        cnf.setValue("ownCloudAutoBackUp","false");
+    }
 }
 
 void Application::openFilesInProgram() {
     foc.openFilesInDolphin(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
-void Application::saveKConfigNow(){
+void Application::saveKConfigNow() {
     kc.uploadConfigutarion(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
-void Application::fillModel(ListReturnIntf *gui){
+void Application::fillModel(ListReturnIntf *gui) {
     kc.getListOfDirectories(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"), gui, this);
 }
 
-bool Application::isNetworkConnection(){
+bool Application::isNetworkConnection() {
     return ncm.isOnline();
 }
 

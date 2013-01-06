@@ -72,14 +72,15 @@ void ListJobRunner::runJob(QString name, QString adress, QString port) {
 void ListJobRunner::jobDone(KIO::Job* job, const KIO::UDSEntryList& list) {
     QStringList stringList;
 
+    // iterate the result for right directories
     KIO::UDSEntryList::ConstIterator it = list.begin();
     const KIO::UDSEntryList::ConstIterator end = list.end();
     for (; it != end; ++it) {
         const KIO::UDSEntry& entry = *it;
         QString name = entry.stringValue( KIO::UDSEntry::UDS_NAME );
         bool isDir = entry.isDir();
-        if (isDir) {
-            if (name != ".") {
+        if (isDir) { // check only directories
+            if (name != ".") { // not the parental directory
 		long i = name.toLong();
 		QDateTime dt = QDateTime::fromTime_t(i);
                 stringList << dt.toString("yyyy-MM-dd hh:mm:ss");
@@ -88,6 +89,8 @@ void ListJobRunner::jobDone(KIO::Job* job, const KIO::UDSEntryList& list) {
     }
 
     owner->returnListOfDirectories(stringList, this->gui, this->facade);
+    // clean up
+    delete this;
 }
 
 

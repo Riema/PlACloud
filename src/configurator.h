@@ -14,7 +14,7 @@ class Configurator {
 public:
     /**
      * Constructor. Prepare the configuration file to use.
-     * The configuration file is a file located in standart KDE config directory. 
+     * The configuration file is a file located in standart KDE config directory.
      * If the file exists configuration is opened and ready for use, otherwise an empty configuration file is created.
      */
     Configurator();
@@ -33,7 +33,7 @@ public:
      * @param value The value of the key. Empty string is ignored.
      */
     void setValue(QString key, QString value);
-    
+
     /**
      * Destroy Configurator object.
      */
