@@ -12,13 +12,20 @@ PlACloud::PlACloud(Application* apps) {
     
     // calling funcion for creating connections
     setConnection();
-    enableClouding();
     connectFilePage();
     connectConfigPage();
     connectSettingsPage();
     
     // first page after start is page with User config
     widget.ownCloudStackedWidget->setCurrentIndex(2);
+    
+    // try network connection
+    if (app->isNetworkConnection()){
+      enableClouding();
+    } else {
+      disableClouding();
+    }
+    
 }
 
 void PlACloud::connectFilePage(){
@@ -66,8 +73,15 @@ void PlACloud::fillSettingsPage() {
     widget.spinBox->setEnabled(widget.configCheckBox->isChecked());
     
     // adding content of ListView on KConfig page
-    configModel = new QStringListModel(app->fillModel());
+    app->fillModel(this);
+}
+
+void PlACloud::onListReturn(QStringList list)
+{
+    kDebug() << "Setting new model";
+    configModel = new QStringListModel(list);
     widget.configListView->setModel(configModel);
+    //widget.configListView->
 }
 
 void PlACloud::setConnection() {

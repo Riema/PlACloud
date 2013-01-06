@@ -6,12 +6,19 @@
 #include "../commons.h"
 #include "kConfigOwnCloud.h"
 #include <QApplication>
+#include <QNetworkConfigurationManager>
+
+class ListReturnIntf {
+public:
+    virtual void onListReturn(QStringList list) = 0;
+    virtual ~ListReturnIntf() {};
+};
 
 /**
  * It's an interface between UI and backend part of the PlACloud application.
  * It delegates work to proper backend class.
  */
-class Application : public QApplication {
+class Application : public QApplication, public ListReturnWithParamIntf {
     Q_OBJECT // for signals and slots
 public:
     /**
@@ -49,7 +56,14 @@ public:
      * date and time of creation to fill the model in UI
      * @return list of directories date and time of creation
      */
-    QStringList fillModel();
+    void fillModel(ListReturnIntf *gui);
+    
+    /**
+     * @return true if there is network connection else false 
+     */
+    bool isNetworkConnection();
+    
+    void onListReturnWithParam(QStringList list, void *param);
 public slots:
     /**
      * Accepts a forwards signal for opening file browser.
@@ -107,7 +121,13 @@ private:
      * Object that works with KConfig a ownCloud
      */
     KConfigOwnCloud kc;
+    
+    /**
+     * Manager to find out if there is network connection.
+     */
+    QNetworkConfigurationManager ncm;
 };
+
 
 #endif	/* APPLICATION_H */
 

@@ -27,6 +27,12 @@ bool Application::isOwnCloudAutoBackUp(){
     return false;
 }
 
+void Application::onListReturnWithParam(QStringList list, void* param){
+      kDebug() << "In facade"; 
+    ListReturnIntf *dest = (ListReturnIntf*) param;
+    dest->onListReturn(list);
+}
+
 void Application::setOwnCloudUserName() {
     // get the content from QLineEdit
     QLineEdit* edit = qobject_cast<QLineEdit*>(sender());
@@ -67,8 +73,12 @@ void Application::saveKConfigNow(){
     kc.uploadConfigutarion(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"));
 }
 
-QStringList Application::fillModel(){
-    return kc.getListOfDirectories();
+void Application::fillModel(ListReturnIntf *gui){
+    kc.getListOfDirectories(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"), gui, this);
+}
+
+bool Application::isNetworkConnection(){
+    return ncm.isOnline();
 }
 
 QString Application::toQString(std::string const &s) {

@@ -19,6 +19,7 @@ gui/PlACloud.ui
 set ( PlACloud_HEADERS
 gui/PlACloud.h
 src/application.h
+src/kConfigOwnCloud.h
 )
 
 set(PlACLoud_SRCS

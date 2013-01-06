@@ -11,7 +11,7 @@
  * and signals and takes care of working part of
  * code.  
  */
-class PlACloud : public QMainWindow {
+class PlACloud : public QMainWindow, public ListReturnIntf {
     Q_OBJECT //signal and slots usage
 public:
     /**
@@ -36,6 +36,8 @@ public:
      * or user confuguration isn't checked or is wrong.
      */
     void disableClouding();
+    
+    virtual void onListReturn(QStringList list);
 private slots:
     /**
      * Slot for switching page in StackedWidget to File page
