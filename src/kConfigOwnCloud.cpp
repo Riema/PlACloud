@@ -49,6 +49,20 @@ void KConfigOwnCloud::returnListOfDirectories(QStringList list, void* gui, ListR
     facade->onListReturnWithParam(list, gui);
 }
 
+void KConfigOwnCloud::restoreKConfigDirectory(QString name, QString adress, QString port, QString directory) {
+    // find out where the configuration is
+    KStandardDirs ksd;
+    kDebug() << ksd.localkdedir();
+
+    // download destination string
+    QString source = QString("webdav://%1@%2:%3/files/webdav.php/.conf-placloud/%4").arg(name, adress, port, directory);
+
+    // create destination string
+    QString dest = QString("file://%1").arg(ksd.locate("config",""));
+
+    // download
+    KIO::copy(KUrl(source),KUrl(dest));
+}
 
 KConfigOwnCloud::~KConfigOwnCloud() {
 }
@@ -83,7 +97,7 @@ void ListJobRunner::jobDone(KIO::Job* job, const KIO::UDSEntryList& list) {
             if (name != ".") { // not the parental directory
 		long i = name.toLong();
 		QDateTime dt = QDateTime::fromTime_t(i);
-                stringList << dt.toString("yyyy-MM-dd hh:mm:ss");
+                stringList.append(QString("%1 (%2)").arg(dt.toString("yyyy-MM-dd hh:mm:ss"), name));
             }
         }
     }

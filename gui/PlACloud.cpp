@@ -25,7 +25,6 @@ PlACloud::PlACloud(Application* apps) {
     } else {
         disableClouding();
     }
-
 }
 
 void PlACloud::connectFilePage() {
@@ -38,6 +37,9 @@ void PlACloud::connectConfigPage() {
     QObject::connect(widget.saveConfButton, SIGNAL(clicked()), app, SLOT(saveKConfigNow()));
     // Toggle of automatic backup button
     QObject::connect(widget.configCheckBox, SIGNAL(toggled(bool)), app, SLOT(setOwnCloudAutoBackUp(bool)));
+    // Restoring KConfig
+    QObject::connect(widget.restoreLastConfigButton, SIGNAL(clicked()), this, SLOT(onRestoreLastKConfig()));
+    QObject::connect(widget.restoreConfigButton,SIGNAL(clicked()), this, SLOT(onRestoreGivenKConfig()));
 }
 
 void PlACloud::connectSettingsPage() {
@@ -45,6 +47,7 @@ void PlACloud::connectSettingsPage() {
     QObject::connect(widget.userNameLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudUserName()));
     QObject::connect(widget.serverLineEdit, SIGNAL(editingFinished()), app, SLOT(setOwnCloudServer()));
     QObject::connect(widget.portSpinBox, SIGNAL(valueChanged(QString)), app, SLOT(setOwnCloudPort(QString)));
+    QObject::connect(widget.testConnectionPushButton, SIGNAL(clicked()), this, SLOT(onConnectionButtonClick()));
 
 }
 
@@ -100,6 +103,40 @@ void PlACloud::configPageSwitch() {
 
 void PlACloud::settingsPageSwitch() {
     widget.ownCloudStackedWidget->setCurrentIndex(2);
+}
+
+void PlACloud::onConnectionButtonClick() {
+    kDebug() << "Testing connection";
+    // try network connection
+    if (app->isNetworkConnection()) {
+        kDebug() << "enabling";
+        enableClouding();
+    } else {
+	kDebug() << "disabling";
+        disableClouding();
+    }
+}
+
+void PlACloud::onRestoreGivenKConfig() {
+    if (widget.configListView->selectionModel()->hasSelection()){
+	QModelIndexList in = widget.configListView->selectionModel()->selectedRows();
+	QString dict = in.first().data().toString();
+	dict = dict.split(" ")[2];
+	dict = dict.split("(")[1];
+	dict = dict.split(")")[0];
+	kDebug() << dict;
+	app->restoreKConfig(dict);
+    }
+}
+
+void PlACloud::onRestoreLastKConfig() {  
+    QModelIndex index = configModel->index(configModel->rowCount() -1, 0);
+    QString dict = index.data().toString();
+    dict = dict.split(" ")[2];
+    dict = dict.split("(")[1];
+    dict = dict.split(")")[0];
+    kDebug() << dict;
+    app->restoreKConfig(dict);
 }
 
 void PlACloud::closeEvent(QCloseEvent* event) {

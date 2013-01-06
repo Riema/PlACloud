@@ -58,6 +58,21 @@ private slots:
      * Slot for switching page in StackedWidget to User config page
      */
     void settingsPageSwitch();
+    
+    /**
+     * Check connection & given login data
+     */
+    void onConnectionButtonClick();
+    
+    /**
+     * Restores last KConfig
+     */
+    void onRestoreLastKConfig();
+    
+    /**
+     * Restores selected KConfig
+     */
+    void onRestoreGivenKConfig();
 private:
     /**
      * Widget with is interface to UI componets

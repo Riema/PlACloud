@@ -80,6 +80,12 @@ public:
      * @param param the instance on which the callback is called
      */
     void onListReturnWithParam(QStringList list, void *param);
+    
+    /**
+     * Restores given KConfig directory
+     * @param determines which directory is suposed to be restored
+     */
+    void restoreKConfig(QString directory);
 public slots:
     /**
      * Accepts a forwards signal for opening file browser.
@@ -136,12 +142,7 @@ private:
     /**
      * Object that works with KConfig a ownCloud
      */
-    KConfigOwnCloud kc;
-
-    /**
-     * Manager to find out if there is network connection.
-     */
-    QNetworkConfigurationManager ncm;
+    KConfigOwnCloud kc;    
 };
 
 

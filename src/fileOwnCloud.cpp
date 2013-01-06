@@ -3,16 +3,14 @@
 #include <QStringList>
 #include <kio/job.h>
 #include <kurl.h>
+#include <kio/netaccess.h>
 
 FileOwnCloud::FileOwnCloud() {
 }
 
 bool FileOwnCloud::testExistenceOfOwnCloud(QString userName, QString cloudAdress, QString port) {
-    /*std::stringstream ss;
-    ss << "webdav://" << userName << "@" << cloudAdress << ":"
-            << port << "/files/webdav.php/.conf";
-    KIO::StatJob sj = KIO::stat(KUrl(ss.str().c_str()));*/
-    return true;
+    QString dest(QString("webdav://%1@%2:%3/files/webdav.php").arg(userName, cloudAdress, port));
+    return KIO::NetAccess::exists(KUrl(dest), KIO::NetAccess::DestinationSide ,NULL);
 }
 
 void FileOwnCloud::openFilesInDolphin(QString userName, QString cloudAdress, QString port) {

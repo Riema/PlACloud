@@ -51,6 +51,15 @@ public:
      * @param facade instance for asynchronous callback
      */
     void returnListOfDirectories(QStringList list,  void *gui, ListReturnWithParamIntf *facade);
+    
+    /**
+     * Restore given KConfig directory
+     * @param userName name of ownCloud user
+     * @param cloudAdress ownCloud instance address
+     * @param port port where the ownCloud is running
+     * @param directory identify directory to restore
+     */
+    void restoreKConfigDirectory(QString name, QString adress, QString port, QString directory);
 private:
     /**
      * Creates directory in ownCloud to store the KConfig in.

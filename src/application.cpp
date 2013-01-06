@@ -77,8 +77,14 @@ void Application::fillModel(ListReturnIntf *gui) {
     kc.getListOfDirectories(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"), gui, this);
 }
 
+void Application::restoreKConfig(QString directory){
+    kc.restoreKConfigDirectory(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort"), directory);
+}
+
 bool Application::isNetworkConnection() {
-    return ncm.isOnline();
+    QNetworkConfigurationManager ncm;
+    kDebug() << ncm.isOnline(); // QNetworkConfigurationManager doesn't work 
+    return (/*ncm.isOnline() &&*/ foc.testExistenceOfOwnCloud(cnf.getValue("ownCloudUserName"), cnf.getValue("ownCloudServer"), cnf.getValue("ownCloudPort")));
 }
 
 QString Application::toQString(std::string const &s) {
